@@ -1,9 +1,26 @@
+import { useState, useEffect } from "react";
 import { SearchOutlined } from "@ant-design/icons";
-import { Input, Space } from "antd";
+import { Input } from "antd";
+import axios from "axios";
+
+import Check from "./Check.png";
+import Star from "./Star.png";
 
 function App() {
+  const [todos, setTodos] = useState([]);
+  const [newTodo, setNewTodo] = useState("");
+  const [done, setDone] = useState(true);
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/todos").then((Response) => {
+      setTodos(Response.data);
+    });
+  }, []);
+
+  console.log(todos);
+
   return (
-    <div className="bg-slate-200">
+    <div className="bg-slate-200 h-screen">
       {/* задний фон и input */}
       <div className="bg-gradient-to-r from-sky-400 to-sky-600 w-full h-56 flex flex-col justify-start items-center">
         <Input
@@ -26,64 +43,12 @@ function App() {
         <div className="bg-indigo-400 opacity-50 w-20 h-20 absolute top-36 right-0 rounded-tl-full" />
         <div className="bg-indigo-400 opacity-50 w-16 h-16 absolute top-40 right-0 rounded-tl-full" />
       </div>
-
-      {/* белый прямоугольник на фоне тудушек */}
-      <div className="w-11/12 h-3/4 bg-slate-100 bottom-0 left-4">
-        {/* здесь начинается первая тудушка */}
-        <div className="bg-slate-100 w-10/12 h-20 shadow-lg left-7 top-8">
-          {/* полосочка слева */}
-          <div className="w-1.5 h-20 bg-sky-500">
-            <h1 className="text-lg top-3 left-8 font-medium">Meeting</h1>
-            <h2 className="top-10 text-xs font-medium left-8">
-              Room 408, east 2 layer
-            </h2>
-            {/* галочка в правом верхнем углу */}
-            <div className="bg-sky-500 w-8 h-8 top-0 right-0 rounded-bl-full" />
-            {/* время */}
-            <h3 className="top-5 text-sm font-semibold right-8 ">10:30</h3>
-          </div>
-        </div>
-        {/* здесь начинается вторая тудушка */}
-        <div className="bg-slate-100 w-10/12 h-20 shadow-lg left-7 top-32">
-          {/* полосочка слева */}
-          <div className="w-1.5 h-20 bg-amber-400">
-            <h1 className="text-lg top-3 left-8 font-medium">Do exersize</h1>
-            <h2 className="top-10 text-xs font-medium left-8">
-              Call the coach
-            </h2>
-            {/* галочка в правом верхнем углу */}
-            <div className="bg-sky-500 w-8 h-8 top-0 right-0 rounded-bl-full" />
-            {/* время */}
-            <h3 className="top-5 text-sm font-semibold right-8">19:00</h3>
-          </div>
-        </div>
-        {/* здесь начинается третья тудушка */}
-        <div className="bg-slate-100 w-10/12 h-20 shadow-lg left-7 top-56">
-          {/* полосочка слева */}
-          <div className="w-1.5 h-20 bg-violet-700">
-            <h1 className="text-lg top-3 left-8 font-medium">Movie</h1>
-            <h2 className="top-10 text-xs font-medium left-8">
-              Take a bunch of flowers
-            </h2>
-            {/* галочка в правом верхнем углу */}
-            <div className="bg-sky-500 w-8 h-8 top-0 right-0 rounded-bl-full" />
-            {/* время */}
-            <h3 className="top-5 text-sm font-semibold right-8">20:00</h3>
-          </div>
-        </div>
-        {/* здесь начинается четвёртая тудушка */}
-        <div className="bg-slate-100 w-10/12 h-20 shadow-lg left-7 top-80">
-          {/* полосочка слева */}
-          <div className="w-1.5 h-20 bg-green-600">
-            <h1 className="text-lg top-3 left-8 font-medium">Check email</h1>
-            {/* галочка в правом верхнем углу */}
-            <div className="bg-sky-500 w-8 h-8 top-0 right-0 rounded-bl-full" />
-            {/* время */}
-            <h3 className="top-5 text-sm font-semibold right-8">22:00</h3>
-          </div>
-        </div>
-        <div className="fixed w-12 h-12 bottom-8 shadow-md bg-slate-100 left-40 rounded-full" />
-      </div>
+      <ul>
+        {todos &&
+          todos.map((todo) => {
+            <li key={todo.id}>{todo.content}</li>;
+          })}
+      </ul>
     </div>
   );
 }
@@ -92,3 +57,39 @@ export default App;
 
 // единица rem = 16 пикселям
 // сверстать дизайн по макету в компоненте App.js
+
+// подправить тудушку (без absolute)
+
+// {/* полосочка слева */}
+// <div className="w-1.5 h-20 bg-sky-500">
+// <h1 className="text-lg font-medium">Meeting</h1>
+// <h2 className="text-xs font-medium">Room 408, east 2 layer</h2>
+// {/* галочка в правом верхнем углу */}
+// <div className="bg-sky-500 w-8 h-8 rounded-bl-full" />
+// {/* время */}
+// <h3 className="text-sm font-semibold">10:30</h3>
+// </div>
+
+// {/* здесь начинается первая тудушка */}
+// <div className="bg-slate-100 w-10/12 h-20 shadow-xl z-50 mx-auto mt-4 border-l-8 border-sky-500 z-50">
+// <div className="flex justify-beetween">
+//   {/* заголовок */}
+//   <h1 className="text-lg font-medium ml-6 pt-3">Meeting</h1>
+//   {/* время */}
+//   <h3 className="text-sm font-semibold ml-auto mt-5 mr-2">10:30</h3>
+//   {/* галочка в правом верхнем углу */}
+//   <div className="bg-sky-500 rounded-bl-full pl-2 pb-0 h-6">
+//     <img src={Check} className="h-3 mr-1 mt-1 " />
+//   </div>
+// </div>
+// <div className="flex justify-beetween">
+//   {/* описание */}
+//   <h2 className="text-xs font-medium ml-6">Room 408, east 2 layer</h2>
+//   {/* div с звёздочками */}
+//   <div className="w-20 h-6 flex justify-beetween mr-0 ml-auto">
+//     <img src={Star} className="h-4 mr-0 ml-auto" />
+//     <img src={Star} className="h-4 mr-0 ml-auto" />
+//     <img src={Star} className="h-4 mr-6 ml-auto" />
+//   </div>
+// </div>
+// </div>
