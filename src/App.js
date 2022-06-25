@@ -10,9 +10,11 @@ function App() {
   const [done, setDone] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/todos").then((Response) => {
-      setTodos(Response.data);
-    });
+    axios
+      .get("https://fathomless-headland-49101.herokuapp.com/api/todos")
+      .then((Response) => {
+        setTodos(Response.data);
+      });
   }, []);
 
   return (
