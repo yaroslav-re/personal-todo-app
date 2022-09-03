@@ -3,6 +3,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 import axios from "axios";
 import Todo from "./components/Todo.js";
+import { Link } from "react-router-dom";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -17,14 +18,31 @@ function App() {
       });
   }, []);
 
+  const addTodo = (e) => {
+    axios.post("http://localhost:3001/api/todos/:id", {
+      id: 2,
+      title: "Workout",
+      content: `${e}`,
+      date: "1657039172000",
+      important: 2,
+      done: true,
+    });
+  };
+
   return (
     <div className="bg-slate-200 h-screen">
+      <button>
+        <Link to="/todo">TodoDescription</Link>
+      </button>
       {/* задний фон и input */}
       <div className="bg-gradient-to-r from-sky-400 to-sky-600 w-full h-56 flex flex-col justify-start items-center">
         <Input
           prefix={<SearchOutlined />}
           placeholder="search"
           className="bg-sky-400 text-center top-4 rounded-xl text-slate-100 text-sm p-1 w-4/5 mb-10"
+          onPressEnter={(e) => {
+            addTodo(e.target.value);
+          }}
         />
         <div className="flex items-end bottom-4 w-full p-5">
           {/* дата */}
@@ -51,10 +69,7 @@ function App() {
 export default App;
 
 // единица rem = 16 пикселям
-// сверстать дизайн по макету в компоненте App.js
 
-// подправить тудушку (без absolute)
-
-// добавить поле title в db.json и отобразить в тудушках
-// отобразить время используя moment.js
-//
+// нужна отдельная страница для todos
+// добавить Push Notifications
+// добавить авторизацию
