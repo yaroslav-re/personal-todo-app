@@ -1,12 +1,12 @@
 import clsx from "clsx";
 import React from "react";
 import moment from "moment";
+import { Navigate } from "react-router-dom";
 
 import Check from "../Check.png";
 import Star from "../Star.png";
 
 export default function ({ todo }) {
-  console.log("todo.date: ", todo.date);
   return (
     <div>
       {/* здесь начинается первая тудушка */}
@@ -16,7 +16,10 @@ export default function ({ todo }) {
           <h1 className="text-lg font-medium ml-6 pt-3">{todo.title}</h1>
           {/* время */}
           <h3 className="text-sm font-semibold ml-auto mt-5 mr-2">
-            {moment.unix(todo.date).format("LT")}
+            {moment(todo.date).format("LL")}
+          </h3>
+          <h3 className="text-sm font-semibold ml-auto mt-5 mr-2">
+            {moment(todo.date).format("LT")}
           </h3>
           {/* галочка в правом верхнем углу */}
           <div

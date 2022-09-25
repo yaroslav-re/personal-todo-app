@@ -4,6 +4,7 @@ import { Input } from "antd";
 import axios from "axios";
 import Todo from "./components/Todo.js";
 import { Link } from "react-router-dom";
+import { TodoDescription } from "./components/TodoDescription.js";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -11,21 +12,19 @@ function App() {
   const [done, setDone] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("https://fathomless-headland-49101.herokuapp.com/api/todos")
-      .then((Response) => {
-        setTodos(Response.data);
-      });
+    axios.get("http://localhost:3001/api/todos").then((Response) => {
+      setTodos(Response.data);
+    });
   }, []);
 
   const addTodo = (e) => {
-    axios.post("http://localhost:3001/api/todos/:id", {
+    axios.post("http://localhost:3001/api/todos", {
       id: 2,
       title: "Workout",
-      content: `${e}`,
+      content: "${e}",
       date: "1657039172000",
-      important: 2,
-      done: true,
+      importance: 1,
+      done: false,
     });
   };
 
@@ -34,17 +33,22 @@ function App() {
       <button>
         <Link to="/todo">TodoDescription</Link>
       </button>
+      <button>
+        <Link to="/login">TodoLogin</Link>
+      </button>
+      <button>
+        <Link to="/signup">TodoSignup</Link>
+      </button>
       {/* задний фон и input */}
-      <div className="bg-gradient-to-r from-sky-400 to-sky-600 w-full h-56 flex flex-col justify-start items-center">
-        <Input
-          prefix={<SearchOutlined />}
-          placeholder="search"
-          className="bg-sky-400 text-center top-4 rounded-xl text-slate-100 text-sm p-1 w-4/5 mb-10"
-          onPressEnter={(e) => {
-            addTodo(e.target.value);
-          }}
-        />
-        <div className="flex items-end bottom-4 w-full p-5">
+      <div className="bg-gradient-to-r from-sky-400 to-sky-700 w-full h-56 flex flex-col justify-start items-center">
+        <form onSubmit={() => addTodo({ e: "123" })}>
+          <input
+            placeholder="search"
+            className="bg-sky-400 text-center rounded-xl text-slate-50 text-sm p-1 w-4/5 mb-10 outline-0 mt-3"
+          />
+          <input type="submit" placeholder="123456" />
+        </form>
+        <div className="flex items-end bottom-4 w-full px-5 pt-3 pb-5">
           {/* дата */}
           <h1 className="text-6xl text-lime-400 mr-2">15</h1>
           <div>
@@ -73,3 +77,7 @@ export default App;
 // нужна отдельная страница для todos
 // добавить Push Notifications
 // добавить авторизацию
+
+// сверстать страницу Login и страницу TodoDescription
+
+// сделать чтобы добалялись тудушки с полем importance

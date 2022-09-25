@@ -10,12 +10,14 @@
     "antd": "^4.19.5",
     "axios": "^0.27.2",
     "clsx": "^1.1.1",
+    "dotenv": "^16.0.2",
     "moment": "^2.29.3",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.74.0"
   },
   "scripts": {
     "start": "react-scripts start",

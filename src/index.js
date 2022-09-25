@@ -5,13 +5,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { TodoDescription } from "./components/TodoDescription";
+import { TodoLogin } from "./components/TodoLogin";
+import { TodoSignup } from "./components/TodoSignup";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="todo" element={<TodoDescription />} />
+        <Route path="/todo" element={<TodoDescription />} />
+        <Route path="/login" element={<TodoLogin />} />
+        <Route path="/signup" element={<TodoSignup />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
