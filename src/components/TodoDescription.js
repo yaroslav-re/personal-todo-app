@@ -14,7 +14,12 @@ export const TodoDescription = () => {
           >
             Back
           </Link>
-          <form className="h-full">
+          <form
+            className="h-full"
+            onSubmit={() => {
+              alert(123);
+            }}
+          >
             <p className="w-screen justify-items-center grid">
               <input
                 type="text"
@@ -33,7 +38,6 @@ export const TodoDescription = () => {
               <input
                 type="time"
                 className="w-4/5 p-3 outline-0 rounded-lg mt-4 shadow mr-auto ml-auto"
-                placeholder="Description"
               />
             </p>
             <div className="w-screen justify-center flex mt-4">

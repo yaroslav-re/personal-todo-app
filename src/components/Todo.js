@@ -10,8 +10,8 @@ export default function ({ todo }) {
   return (
     <div>
       {/* здесь начинается первая тудушка */}
-      <div className="bg-slate-100 w-10/12 h-20 shadow-xl z-50 mx-auto mt-4 border-l-8 border-sky-500 z-50">
-        <div className="flex justify-beetween">
+      <main className="bg-slate-100 w-10/12 h-20 shadow-xl z-50 mx-auto mt-4 border-l-8 border-sky-500 z-50">
+        <div className="flex">
           {/* заголовок */}
           <h1 className="text-lg font-medium ml-6 pt-3">{todo.title}</h1>
           {/* время */}
@@ -31,17 +31,17 @@ export default function ({ todo }) {
             <img src={Check} className="h-3 mr-1 mt-1 " />
           </div>
         </div>
-        <div className="flex justify-beetween">
+        <div className="flex">
           {/* описание */}
           <h2 className="text-xs font-medium ml-6">{todo.content}</h2>
           {/* div с звёздочками */}
-          <div className="w-20 h-6 flex justify-beetween mr-0 ml-auto">
+          <div className="w-20 h-6 flex mr-0 ml-auto">
             <img src={Star} className="h-4 mr-0 ml-auto" />
             <img src={Star} className="h-4 mr-0 ml-auto" />
             <img src={Star} className="h-4 mr-6 ml-auto" />
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

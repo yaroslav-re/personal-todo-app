@@ -5,8 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { TodoDescription } from "./components/TodoDescription";
-import { TodoLogin } from "./components/TodoLogin";
-import { TodoSignup } from "./components/TodoSignup";
+import { TodoLogin } from "./pages/TodoLogin";
+import { TodoSignup } from "./pages/TodoSignup";
 
 ReactDOM.render(
   <React.StrictMode>
