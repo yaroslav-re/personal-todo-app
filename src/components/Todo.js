@@ -5,8 +5,13 @@ import { Navigate } from "react-router-dom";
 
 import Check from "../Check.png";
 import Star from "../Star.png";
+import noneImportantStar from "../Star2.png";
 
 export default function ({ todo }) {
+  const { importance } = todo;
+  // console.log("importance: ", importance);
+  const noneImportant = 3 - importance;
+
   return (
     <div>
       {/* здесь начинается первая тудушка */}
@@ -36,12 +41,21 @@ export default function ({ todo }) {
           <h2 className="text-xs font-medium ml-6">{todo.content}</h2>
           {/* div с звёздочками */}
           <div className="w-20 h-6 flex mr-0 ml-auto">
-            <img src={Star} className="h-4 mr-0 ml-auto" />
-            <img src={Star} className="h-4 mr-0 ml-auto" />
-            <img src={Star} className="h-4 mr-6 ml-auto" />
+            {Array.from(Array(todo.importance), (e, i) => {
+              return <img src={Star} key={i} className="h-4 pl-1" />;
+            })}
+            {Array.from(Array(noneImportant), (e, i) => {
+              return (
+                <img src={noneImportantStar} key={i} className="h-4 pl-1 " />
+              );
+            })}
           </div>
         </div>
       </main>
     </div>
   );
 }
+
+//<img src={Star} className="h-4 mr-0 ml-auto" />
+
+// поправить звёзочки

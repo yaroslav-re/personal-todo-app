@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Star from "../Star.png";
 
-export const TodoDescription = () => {
+export const TodoDescription = (todo) => {
   return (
     <div>
       {/* задний фон */}
@@ -58,12 +58,3 @@ export const TodoDescription = () => {
     </div>
   );
 };
-
-{
-  /* <input
-  type="submit"
-  className="shadow-lg p-3 bg-sky-400/50 hover:bg-sky-600/50 active:bg-sky-700/50 rounded-lg w-2/5 cursor-pointer"
->
-  Submit
-</input>; */
-}

@@ -1,24 +1,36 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Star from "../Star.png";
+import { v4 as uuidv4 } from "uuid";
 
 export const NewTodo = () => {
-  const [title, setTitle] = useState();
-  const [description, setDescription] = useState();
-  const [time, setTime] = useState();
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [time, setTime] = useState("");
   const [form, setForm] = useState([]);
 
   const addFormData = (inf) => {
     let data = [...form, inf];
     setForm(data);
+
+    const newTodo = {
+      id: uuidv4(),
+      title: title,
+      content: content,
+      date: new Date(),
+      importance: 2,
+      important: true,
+    };
+    console.log("newTodo: ", newTodo);
+    axios.post("http://localhost:3001/", ...newTodo);
   };
 
   const handleSubmit = (e) => {
-    addFormData([title, description, time]);
+    addFormData([title, content, time]);
+
     e.preventDefault();
   };
-
-  console.log("form: ", form);
 
   return (
     <div>
@@ -41,10 +53,10 @@ export const NewTodo = () => {
         </p>
         <p className="w-full justify-items-center grid">
           <input
-            name="description"
-            value={description}
+            name="content"
+            value={content}
             onChange={(e) => {
-              setDescription(e.target.value);
+              setContent(e.target.value);
             }}
             type="text"
             className="w-full p-3 outline-0 rounded-lg shadow mt-2"
