@@ -22,8 +22,8 @@ export const NewTodo = () => {
       importance: 2,
       important: true,
     };
-    console.log("newTodo: ", newTodo);
-    axios.post("http://localhost:3001/", ...newTodo);
+
+    axios.post("http://localhost:3001/api/todos", ...newTodo);
   };
 
   const handleSubmit = (e) => {
@@ -72,6 +72,7 @@ export const NewTodo = () => {
             }}
             type="time"
             className="w-full p-3 outline-0 rounded-lg shadow mt-2"
+            role="time"
           />
         </p>
         <div className="w-full justify-center flex mt-4">
@@ -84,6 +85,7 @@ export const NewTodo = () => {
             type="submit"
             className="shadow-lg p-3 bg-sky-400/50 hover:bg-sky-600/50 active:bg-sky-700/50 rounded-lg w-2/5 cursor-pointer mt-4"
             value="Отправить"
+            role="submit"
           />
         </p>
       </form>

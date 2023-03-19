@@ -21,8 +21,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  console.log("user: ", user);
-
   useEffect(() => {
     todoService.getAll().then((Response) => {
       setTodos(Response);
@@ -100,6 +98,7 @@ function App() {
             isModalOpen={isModalOpen}
             handleOk={handleOk}
             handleCancel={handleCancel}
+            addTodo={addTodo}
           />
           <div className="bg-gradient-to-r from-sky-400 to-sky-700 w-full h-56 flex flex-col justify-start items-center">
             <HeaderDate />

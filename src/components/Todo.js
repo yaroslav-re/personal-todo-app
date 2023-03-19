@@ -9,7 +9,6 @@ import noneImportantStar from "../Star2.png";
 
 export default function ({ todo }) {
   const { importance } = todo;
-  // console.log("importance: ", importance);
   const noneImportant = 3 - importance;
 
   return (

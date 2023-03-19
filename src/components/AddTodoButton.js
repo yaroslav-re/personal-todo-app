@@ -4,6 +4,7 @@ import Plus from "../assets/icons/plus.svg";
 const AddTodoButton = ({ showModal }) => {
   return (
     <div
+      role="AddTodoButton"
       className="absolute bottom-4"
       onClick={() => {
         showModal();

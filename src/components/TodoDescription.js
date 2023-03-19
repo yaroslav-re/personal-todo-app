@@ -25,6 +25,7 @@ export const TodoDescription = (todo) => {
                 type="text"
                 className="w-4/5 p-3 outline-0 rounded-lg shadow mt-12 mr-auto ml-auto"
                 placeholder="Title"
+                role="Title"
               />
             </p>
             <p className="w-screen justify-items-center grid">
@@ -38,6 +39,7 @@ export const TodoDescription = (todo) => {
               <input
                 type="time"
                 className="w-4/5 p-3 outline-0 rounded-lg mt-4 shadow mr-auto ml-auto"
+                role="time"
               />
             </p>
             <div className="w-screen justify-center flex mt-4">
