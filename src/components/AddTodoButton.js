@@ -5,12 +5,12 @@ const AddTodoButton = ({ showModal }) => {
   return (
     <div
       role="AddTodoButton"
-      className="absolute bottom-4"
+      className="fixed bottom-4"
       onClick={() => {
         showModal();
       }}
     >
-      <img src={Plus} className="w-12 " />
+      <img src={Plus} className="w-12" />
     </div>
   );
 };

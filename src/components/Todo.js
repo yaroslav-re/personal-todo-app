@@ -1,20 +1,20 @@
 import clsx from "clsx";
 import React from "react";
 import moment from "moment";
-import { Navigate } from "react-router-dom";
+import { Rate } from "antd";
 
-import Check from "../Check.png";
-import Star from "../Star.png";
-import noneImportantStar from "../Star2.png";
+import Check from "../assets/icons/Check.png";
+import Star from "../assets/icons/Star.png";
+import noneImportantStar from "../assets/icons/Star2.png";
+import Garbage from "../assets/icons/garbage.svg";
 
-export default function ({ todo }) {
-  const { importance } = todo;
-  const noneImportant = 3 - importance;
-
+const Todo = ({ todo, handleDelete, randomColor, handleToggleDone }) => {
   return (
     <div>
-      {/* здесь начинается первая тудушка */}
-      <main className="bg-slate-100 w-10/12 h-20 shadow-xl z-50 mx-auto mt-4 border-l-8 border-sky-500 z-50">
+      <main
+        style={{ borderColor: randomColor }}
+        className={`bg-slate-100 w-80 h-20 shadow-2xl z-50 mx-auto my-4 border-l-8  z-50`}
+      >
         <div className="flex">
           {/* заголовок */}
           <h1 className="text-lg font-medium ml-6 pt-3">{todo.title}</h1>
@@ -29,8 +29,11 @@ export default function ({ todo }) {
           <div
             className={clsx(
               "bg-sky-500 rounded-bl-full pl-2 pb-0 h-6",
-              todo.done && "bg-slate-400",
+              !todo.important && "bg-slate-400",
             )}
+            onClick={() => {
+              handleToggleDone(todo.id, { important: !todo.important });
+            }}
           >
             <img src={Check} className="h-3 mr-1 mt-1 " />
           </div>
@@ -38,22 +41,26 @@ export default function ({ todo }) {
         <div className="flex">
           {/* описание */}
           <h2 className="text-xs font-medium ml-6">{todo.content}</h2>
+          {/* удаление */}
+          <img
+            src={Garbage}
+            className="h-6 w-6 ml-auto"
+            onClick={() => {
+              handleDelete(todo.id);
+            }}
+          />
           {/* div с звёздочками */}
           <div className="w-20 h-6 flex mr-0 ml-auto">
-            {Array.from(Array(todo.importance), (e, i) => {
-              return <img src={Star} key={i} className="h-4 pl-1" />;
-            })}
-            {Array.from(Array(noneImportant), (e, i) => {
-              return (
-                <img src={noneImportantStar} key={i} className="h-4 pl-1 " />
-              );
-            })}
+            {console.log(todo.importance)}
+            <Rate count={3} value={todo.importance} />
           </div>
         </div>
       </main>
     </div>
   );
-}
+};
+
+export default Todo;
 
 //<img src={Star} className="h-4 mr-0 ml-auto" />
 

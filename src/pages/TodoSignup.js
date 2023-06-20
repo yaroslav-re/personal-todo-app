@@ -17,29 +17,29 @@ export const TodoSignup = () => {
             <h1 className="text-5xl mb-10 w-full text-center top-0 font-medium">
               Sign Up
             </h1>
-            <p className="w-screen justify-items-center grid">
+            <div className="w-screen justify-items-center grid">
               <input
                 type="text"
                 name="login"
-                placeholder="Email"
+                placeholder="Name"
                 className="w-4/5 p-3 outline-0 rounded-lg shadow mb-5 mt-auto mr-auto ml-auto"
               />
-            </p>
-            <p className="w-screen justify-items-center grid">
+            </div>
+            <div className="w-screen justify-items-center grid">
               <input
                 type="password"
                 name="password"
                 placeholder="Password"
                 className="w-4/5 p-3 outline-0 mx-9 rounded-lg shadow mb-10"
               />
-            </p>
-            <p className="w-screen justify-items-center grid">
+            </div>
+            <div className="w-screen justify-items-center grid">
               <input
                 type="submit"
                 className="shadow-lg p-3 bg-sky-400/50 hover:bg-sky-600/50 active:bg-sky-700/50 rounded-lg w-2/5 cursor-pointer"
-                placeholder="Submit"
+                placeholder="Sign up"
               ></input>
-            </p>
+            </div>
           </form>
         </div>
       </div>

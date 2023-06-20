@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Star from "../Star.png";
+import Star from "../assets/icons/Star.png";
 
 export const TodoDescription = (todo) => {
   return (
@@ -20,40 +20,40 @@ export const TodoDescription = (todo) => {
               alert(123);
             }}
           >
-            <p className="w-screen justify-items-center grid">
+            <div className="w-screen justify-items-center grid">
               <input
                 type="text"
                 className="w-4/5 p-3 outline-0 rounded-lg shadow mt-12 mr-auto ml-auto"
                 placeholder="Title"
                 role="Title"
               />
-            </p>
-            <p className="w-screen justify-items-center grid">
+            </div>
+            <div className="w-screen justify-items-center grid">
               <input
                 type="text"
                 className="w-4/5 p-3 outline-0 rounded-lg mt-4 shadow mr-auto ml-auto"
                 placeholder="Description"
               />
-            </p>
-            <p className="w-screen justify-items-center grid">
+            </div>
+            <div className="w-screen justify-items-center grid">
               <input
                 type="time"
                 className="w-4/5 p-3 outline-0 rounded-lg mt-4 shadow mr-auto ml-auto"
                 role="time"
               />
-            </p>
+            </div>
             <div className="w-screen justify-center flex mt-4">
               <img src={Star} className="h-12" />
               <img src={Star} className="h-12" />
               <img src={Star} className="h-12" />
             </div>
-            <p className="w-screen justify-items-center grid">
+            <div className="w-screen justify-items-center grid">
               <input
                 type="submit"
                 className="shadow-lg p-3 bg-sky-400/50 hover:bg-sky-600/50 active:bg-sky-700/50 rounded-lg w-2/5 cursor-pointer mt-4"
                 placeholder="Submit"
               ></input>
-            </p>
+            </div>
           </form>
         </div>
       </div>

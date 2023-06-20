@@ -12,13 +12,6 @@ const TodoLogin = ({
     <div>
       <div className="bg-gradient-to-r from-sky-400 to-sky-700 w-full h-screen flex flex-col justify-start items-center">
         <div className="bg-slate-100 h-2/3 w-full mt-auto mb-auto flex flex-col">
-          <Link
-            to="/"
-            className="absolute text-lg bg-slate-200/75 px-4 py-2 hover:bg-slate-300/100 text-slate-500/50"
-          >
-            Back
-          </Link>
-
           <form className="pt-16" onSubmit={handleLogin}>
             <h1 className="text-5xl mb-10 w-full text-center font-medium">
               Log In
@@ -27,6 +20,7 @@ const TodoLogin = ({
               <input
                 type="text"
                 name="Username"
+                placeholder="Name"
                 value={username}
                 className="w-4/5 p-3  rounded-lg shadow mb-5 mt-auto mr-auto ml-auto"
                 onChange={({ target }) => setUsername(target.value)}
@@ -36,12 +30,12 @@ const TodoLogin = ({
               <input
                 type="text"
                 name="Password"
+                placeholder="Password"
                 value={password}
                 className="w-4/5 p-3  mx-9 rounded-lg shadow mb-10"
                 onChange={({ target }) => setPassword(target.value)}
               />
             </div>
-
             <div className="w-screen justify-items-center grid">
               <button
                 type="submit"
@@ -51,6 +45,14 @@ const TodoLogin = ({
               </button>
             </div>
           </form>
+          <div className="w-full flex flex-col items-center mt-5">
+            <Link
+              to="/signup"
+              className="underline underline-offset-1 text-slate-400"
+            >
+              Sign Up
+            </Link>
+          </div>
         </div>
       </div>
     </div>
